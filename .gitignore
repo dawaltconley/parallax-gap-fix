@@ -1,0 +1,11 @@
+_site/
+node_modules/
+assets/test/
+.publish/
+.sass-cache/
+.jekyll-metadata
+.DS_Store
+*~
+*.swp
+*.swo
+sh.exe.stackdump
