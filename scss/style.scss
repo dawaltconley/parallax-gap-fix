@@ -1,104 +1,123 @@
 // Sass
 
 $bg-images: (
-  bg1: "https://images.pexels.com/photos/370799/pexels-photo-370799.jpeg",
-  bg2: "https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg"
+  bg1: "https://images.pexels.com/photos/952670/pexels-photo-952670.jpeg",
+  bg2: "https://images.pexels.com/photos/908286/pexels-photo-908286.jpeg",
+  bg3: "https://images.pexels.com/photos/414634/pexels-photo-414634.jpeg"
 );
 
 $perspective: 100;
 
 @mixin parallax-support {
-    @supports ((perspective: 1px) and (not (-webkit-overflow-scrolling: touch))) {
-        @content;
-    }
+  @supports ((perspective: 1px) and (not (-webkit-overflow-scrolling: touch))) {
+    @content;
+  }
 }
 
 @mixin parallax ($depth: 0) {
-    position: absolute !important;
-    top: 0; bottom: 0; left: 0; right: 0;
+  position: absolute !important;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 
-    @include parallax-support {
-        $scale: 1 - ($depth / $perspective);
-        $height-adjust: calc((1 - (1 / #{$scale})) * (100vh - 100%) / -2);
-        top: $height-adjust; bottom: $height-adjust;
-        transform-origin: right;
-        transform: translateZ($depth * 1px) scale($scale);
-    }
+  @include parallax-support {
+    $scale: 1 - ($depth / $perspective);
+    $height-adjust: calc((1 - (1 / #{$scale})) * (100vh - 100%) / -2);
+    top: $height-adjust;
+    bottom: $height-adjust;
+    transform-origin: right;
+    transform: translateZ($depth * 1px) scale($scale);
+  }
 }
 
 // Parallax
 
-html, body {
-    max-width: 100%;
-    overflow-x: hidden;
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .parallax-page {
-    position: relative;
-    overflow-y: auto;
-    overflow-x: hidden;
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
 
-    @include parallax-support {
-        height: 100vh;
-        perspective: $perspective * 1px;
-        -webkit-perspective-origin: right;
-        perspective-origin: right;
-    }
+  @include parallax-support {
+    height: 100vh;
+    perspective: $perspective * 1px;
+    -webkit-perspective-origin: right;
+    perspective-origin: right;
+  }
 }
 
 .parallax-group {
-    position: relative;
-    background-color: transparent !important;
-    pointer-events: none;
+  position: relative;
+  background-color: transparent !important;
+  pointer-events: none;
 
-    > * {
-        pointer-events: auto;
-    }
+  > * {
+    pointer-events: auto;
+  }
 
-    @include parallax-support {
-        transform-style: preserve-3d;
-    }
+  @include parallax-support {
+    transform-style: preserve-3d;
+  }
 }
 
 .parallax-bg-deep {
-    @include parallax(-200);
+  @include parallax(-200);
 }
 
 .parallax-bg-middle {
-    @include parallax(-100);
+  @include parallax(-100);
 }
 
 .parallax-bg-shallow {
-    @include parallax(-50);
+  @include parallax(-50);
 }
 
 // Styles
 
-$base-bg-color: #EEAABB;
+$text-color: #222233;
+$bg-color: #EEEEEE;
+$link-color: #ffaaaa;
 
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-size: 1.2rem;
-  font-size: 3vmin;
-  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.3rem;
+  font-size: 4vmin;
+  font-weight: 400;
+  line-height: 1.2;
+  background-color: red;
   text-align: center;
 }
 
-@each $name, $img in $bg-images {
-  .#{$name} {
-    background-image: url($img);
-    background-size: cover;
-    background-position: center;
-    background-repeat: none;
-  }
+h1, h2 {
+  font-weight: 600;
 }
 
-.screen-height {
-  height: 600px;
-  min-height: 100vh;
+strong {
+  font-weight: 500;
+}
+
+a {
+  color: $link-color;
+  text-decoration: none;
+ 
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  &:visited {
+    color: lighten($link-color, 6%)
+  }
 }
 
 %flex-center {
@@ -117,83 +136,143 @@ body {
   }
 }
 
-.arrows {  
-  $arrow-size: 30px;
-  $parallax-inset: 60px;
-  
-  &:before {
-    content: "";
-    position: absolute;
-    display: block;
-    top: 10px;
-    left: calc(50% - #{$arrow-size});
-    border-bottom: $arrow-size solid white;
-    border-left: $arrow-size solid transparent;
-    border-right: $arrow-size solid transparent;
-  }
-    
-  &:after {
-    content: "";
-    position: absolute;
-    display: block;
-    bottom: 10px;
-    left: calc(50% - #{$arrow-size});
-    border-top: $arrow-size solid white;
-    border-left: $arrow-size solid transparent;
-    border-right: $arrow-size solid transparent;
-  }
-  
-  .parallax-group &:before {
-    top: $parallax-inset;
-  }
-  
-  .parallax-group &:after {
-    bottom: $parallax-inset;
-  }
-}
-
-.parallax-bg-deep {
-  &:before, &:after{
-    border-top-color: rgba(#FF7777, 1);
-    border-bottom-color: rgba(#FF7777, 1);
-  }
-}
-
-.parallax-bg-middle {
-  &:before, &:after{
-    border-top-color: rgba(#77FF77, 1);
-    border-bottom-color: rgba(#77FF77, 1);
-  }
-}
-
-.parallax-bg-shallow {
-  &:before, &:after{
-    border-top-color: rgba(#7777FF, 1);
-    border-bottom-color: rgba(#7777FF, 1);
-  }
-}
-
 .base-layer {
   position: relative;
-  background-color: $base-bg-color;
+  color: $text-color;
+  background-color: $bg-color;
   z-index: 1;
 }
 
-#fix-options {
+.parallax-group {
+  color: $bg-color;
+  text-shadow: 1px 1px 4px $text-color;
+}
+
+footer {
+  color: $bg-color;
+  background-color: $text-color;
+  padding: 15px;
+  line-height: 1.4;
+  font-size: 16px;
+  p {
+    margin: 0;
+  }
+}
+
+.footer-table {
+  @media (min-width: 800px) {
+    display: table;
+    margin: 0 auto;
+    border-collapse: collapse;
+    table-layout: fixed;
+    line-height: 30px;
+ 
+    p {
+      display: table-cell;
+      padding: 0 1em;
+      width: 50%;
+ 
+      &:first-child {
+        text-align: right;
+        border-right: 1px solid mix($text-color, $bg-color, 90%);
+      }
+    }
+  }
+}
+
+.screen-height {
+  min-height: 100vh;
+}
+
+%bg {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@each $name, $img in $bg-images {
+  .#{$name} {
+    @extend %bg;
+    background-image: url($img);
+  }
+}
+
+.arrows {
+  $arrow-color: #b3b3b3;
+  $arrow-size: 30px;
+  $parallax-inset: 60px;
+  
+  &:before, &:after {
+    content: "";
+    position: absolute;
+    display: block;
+    left: calc(50% - #{$arrow-size});
+    border-top: 0 solid $arrow-color;
+    border-bottom: 0 solid $arrow-color;
+    border-left: $arrow-size solid transparent;
+    border-right: $arrow-size solid transparent;
+  }
+
+  &:before {
+    top: 10px;
+    border-bottom-width: $arrow-size;
+  }
+
+  &:after {
+    bottom: 10px;
+    border-top-width: $arrow-size;
+  }
+  
+  @for $i from 1 through 3 {
+    $depth: nth(("shallow", "middle", "deep"), $i);
+    &.parallax-bg-#{$depth} {
+      $color: rgba(darken($arrow-color, $i * 14%), 1);
+      $size: $arrow-size - ($i * 4px);
+      &:before, &:after {
+        left: calc(50% - #{$size});
+        border-top-color: $color;
+        border-bottom-color: $color;
+        border-left-width: $size;
+        border-right-width: $size;
+      }
+      &:before {
+        top: $parallax-inset;
+        border-bottom-width: $size;
+      }
+      &:after {
+        bottom: $parallax-inset;
+        border-top-width: $size;
+      }
+    }
+  }
+}
+
+.hide-arrows .arrows {
+  &:before, &:after {
+    display: none;
+  }
+}
+
+#options {
   position: fixed;
   top: 30px;
   left: 30px;
+  font-family: sans-serif;
   font-size: 1.2rem;
   z-index: 100;
-}
-
-.relative-content {
-  @extend %flex-center;
-  width: 50%;
-  padding: 30px;
-  color: $base-bg-color;
-  background-color: white;
-  border-radius: 10px
+  text-align: left;
+  line-height: 1.5;
+  color: $text-color;
+  background-color: rgba($bg-color, 0.8);
+  padding: 8px;
+  border-radius: 5px;
+  
+  input {
+    vertical-align: middle;
+    position: relative;
+    bottom: .15em;
+    margin-right: .3em;
+  }
 }
 
 // The Fix
@@ -203,11 +282,10 @@ body {
   & .parallax-page {
     perspective-origin: left;
   }
-//  & .parallax-group {
-//    width: calc(200% - 100vw);
-//  }
   & .parallax-bg {
-    &-deep, &-middle, &-shallow {
+    &-deep,
+    &-middle,
+    &-shallow {
       transform-origin: left;
     }
   }
@@ -218,11 +296,10 @@ body {
   & .parallax-page {
     perspective-origin: center;
   }
-//  & .parallax-group {
-//    width: calc(200% - 100vw);
-//  }
   & .parallax-bg {
-    &-deep, &-middle, &-shallow {
+    &-deep,
+    &-middle,
+    &-shallow {
       transform-origin: center;
     }
   }

@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Parallax Gap Fix</title>
-  
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
   
@@ -15,45 +16,59 @@
 
 <body>
 
+  <div id="options">
   <select id="fix-options">
-  <option value="null">Bug</option>
-  <option value="fix-1">Fix 1</option>
-  <option value="fix-2">Fix 2</option>
-  <option value="fix-3">Fix 3</option>
-  <option value="fix-4">Fix 4</option>
-  <option value="fix-5">Fix 5</option>
-</select>
+    <option value="null">Original</option>
+    <option value="fix-1">Fix 1</option>
+    <option value="fix-2">Fix 2</option>
+    <option value="fix-3">Fix 3</option>
+    <option value="fix-4">Fix 4</option>
+    <option value="fix-5">Fix 5</option>
+  </select>
+  <div>
+    <label for="toggle-center"><input type="checkbox" id="toggle-center">Show Center</label>
+  </div>
+</div>
 <div class="parallax-page">
   <div class="parallax-group screen-height">
+    <div class="parallax-bg-deep bg1 arrows"></div>
     <div class="parallax-bg-middle content arrows">
       <h1>Parallax Gap Fix</h1>
-      <p>This parallax page works fine without scrollbars, or with the default Mac scrollbars for trackpads, which do not change the width of the scrolling element.</p>
-    </div>
-    <div class="parallax-bg-deep bg1 arrows">
+      <p>This page uses <a href="https://keithclark.co.uk/articles/pure-css-parallax-websites/">Kieth Clark's Pure CSS parallax layout.</a> It works fine without scrollbars, or with the default Mac scrollbars for trackpads, which do not change the width of the scrolling element.</p>
     </div>
   </div>
   <div class="content base-layer screen-height arrows">
     <h2>Try forcing scrollbars</h2>
-    <p>On Mac, you can do this by going to <code>Settings > General</code> and setting "Show scroll bars" to "Always." This also happens under the default settings whenever a USB mouse is connected.</p>
+    <p>On Mac, you can do this by going to <code>Settings > General</code> and setting <code>Show scroll bars</code> to <code>Always.</code> This also happens under the default settings whenever a USB mouse is connected.</p>
   </div>
   <div class="parallax-group screen-height">
+    <div class="parallax-bg-middle bg2 arrows"></div>
     <div class="parallax-bg-shallow content arrows">
       <h2>Do you see it now?</h2>
-      <div class="relative-content">
-        <p>There should be a strip of white space to the left of this parallax element. This is because the scrollbar changes the inner width of an element, but not the total size, in which the 3D space is rendered.</p>
-      </div>
-      <!--<p>The scrolling!</p>-->
-    </div>
-    <div class="parallax-bg-middle bg2 arrows">
+        <p>A red strip of document body peeking past the parallax background. This is because the scrollbar changes the inner width of an element, but not the total size, in which the 3D space for parallax elements is rendered.</p>
     </div>
   </div>
   <div class="content base-layer screen-height arrows">
     <h2>How do I fix it?</h2>
-    <div class="relative-content">
-      <p>You can try some of my fixes using the menu in the top left. Unfortunately, none of them are perfect. Safari seems to render 3D space differently than every other major browser. Fixes 1 and 3 work everywhere except Safari. Fixes 2 and 4 only work on Safari.</p>
-      <p>At the moment, fix 3 seems to be the best compromise all around</p>
+    <p>You can try some of my fixes using the menu in the top left. The first pair modifies the <code>perspective-origin</code> and <code>transform-origin</code> properties. The second adds padding and negative margins to offset the scrollbar. Unfortunately, none of them are perfect.</p>
+  </div>
+  <div class="parallax-group screen-height">
+    <div class="parallax-bg-middle bg3 arrows"></div>
+    <div class="parallax-bg-shallow content arrows">
+      <h2>Browser Inconsistencies</h2>
+        <p>Safari seems to render 3D space differently than other modern browsers. Fixes 1a and 2a are slightly misaligned on Safari, while fixes 1b and 2b only work on Safari. Fix 3 removes the scrollbar entirely, but only works in webkit browsers.</p>
     </div>
   </div>
+  <div class="content base-layer screen-height arrows">
+    <h2>Verdict?</h2>
+    <p>At the moment, <strong>Fix 2a</strong> seems to be the best solution all around. Parallax elements are misaligned on Safari but still fill the 3D space so that no document body is visible. A combination of 2a and 3 would center the alignment accross all browsers at the cost of accessibility.</p>
+  </div>
+  <footer>
+    <div class="footer-table">
+      <p>Copyright © 2018 Dylan Awalt-Conley</p>
+      <p>Have a better solution? <a href="https://github.com/dawaltconley/parallax-gap-fix"><i class="fa fa-github fa-fw fa-lg">&nbsp;</i>Let me know</a></p>
+    </div>
+  </footer>
 </div>
   
   
