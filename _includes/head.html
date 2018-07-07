@@ -1,0 +1,54 @@
+<head>
+  <meta charset="utf-8">
+  <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![end if]-->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {% if page.title %}
+    {% assign title = page.title | escape %}
+  {% else %}
+    {% assign title = site.title | escape %}
+  {% endif %}
+
+  {% if page.excerpt %}
+    {% assign description = page.excerpt | strip_html | strip_newlines | truncate: 160 %}
+  {% else %}
+    {% assign description = site.description %}
+  {% endif %}
+
+  {% assign page_url = page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url %}
+  {% assign site_url = site.url | append: site.baseurl %}
+
+  <title>{{ title }}</title>
+  <meta name="description" content="{{ description }}">
+
+  {% if site.keywords %}
+    <meta name="keywords" content="{{ site.keywords | join: ', ' }}">
+  {% endif %}
+
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ page_url }}">
+  <meta property="og:title" content="{{ title }}">
+  <meta property="og:description" content="{{ description }}">
+
+  {% if page.collection.og_image %}
+    <meta property="og:image" content="{{ page.og_image | prepend: site_url }}">
+  {% elsif page.og_image %}
+    <meta property="og:image" content="{{ page.collection.og_image | prepend: site_url }}">
+  {% elsif site.og_image %}
+    <meta property="og:image" content="{{ site.og_image | prepend: site_url }}">
+  {% endif %}
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
+  <link rel="canonical" href="{{ page_url }}">
+
+  <script src="{{ site.baseurl }}/js/picturefill.min.js" async></script>
+
+  {% if site.google_analytics and jekyll.environment == 'production' %}
+    {% include analytics.html %}
+  {% endif %}
+</head>
