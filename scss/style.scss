@@ -1,11 +1,5 @@
 // Sass
 
-$bg-images: (
-  bg1: "https://images.pexels.com/photos/952670/pexels-photo-952670.jpeg",
-  bg2: "https://images.pexels.com/photos/908286/pexels-photo-908286.jpeg",
-  bg3: "https://images.pexels.com/photos/414634/pexels-photo-414634.jpeg"
-);
-
 $perspective: 100;
 
 @mixin parallax-support {
@@ -184,17 +178,24 @@ footer {
   min-height: 100vh;
 }
 
-%bg {
+.bg-1, .bg-2, .bg-3 {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 
-@each $name, $img in $bg-images {
-  .#{$name} {
-    @extend %bg;
-    background-image: url($img);
-  }
+
+.bg-1 {
+  background-image: url("https://images.pexels.com/photos/952670/pexels-photo-952670.jpeg");
+}
+
+.bg-2 {
+  background-image: url("https://images.pexels.com/photos/908286/pexels-photo-908286.jpeg");
+}
+
+.bg-3 {
+  $darken: .55;
+  background-image: linear-gradient(rgba(black, $darken), rgba(black, $darken)), url("https://images.pexels.com/photos/414634/pexels-photo-414634.jpeg")
 }
 
 .arrows {
