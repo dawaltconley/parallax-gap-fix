@@ -1,0 +1,79 @@
+# Global Variables
+
+title: Parallax Gap Fix
+description: >
+  A fix for a bug in pure CSS parallax layouts.
+keywords: # a YAML list. optional; only used by some older search engines.
+baseurl: /parallax-gap-fix
+url: https://dawaltconley.github.io
+og_image: # default og image used for entire site; can be overridden if specified in page or collection frontmatter
+google_analytics: # tracking number
+permalink: /:title/ # default permalink structure for pages
+timezone: America/New_York # used for liquid-generated datetimes
+emptyArray: [] # variable for easy array creation
+auto_scroll: false # enables smooth scrolling for all same-page links using zenscroll
+bg_testing: false # turn on to enable the bg-testing.html include
+
+image_bp: # breakpoints used for creating responsive images
+  - x: 2880
+    y: 1800
+  - x: 2560
+    y: 1600
+  - x: 2160
+    y: 1440
+  - x: 1920
+    y: 1200
+  - x: 1400
+    y: 900
+  - x: 1280
+    y: 800
+  - x: 1024
+    y: 768
+  - x: 960
+    y: 640
+  - x: 800
+    y: 480
+  - x: 640
+    y: 360
+  - x: 480
+    y: 320
+
+# Build settings
+
+markdown: kramdown
+exclude:
+  - "README.md"
+  - "Gemfile"
+  - "Gemfile.lock"
+  - "package.json"
+  - "package-lock.json"
+  - "node_modules"
+  - "gulpfile.js"
+  - "assets/test"
+
+# Prose
+
+prose:
+  ignore:
+    - "*.html"
+    - "*.svg"
+    - "*.xml"
+    - "*.liquid"
+    - "*.js"
+    - "*.json"
+    - "*.jsonp"
+    - "*.rb"
+    - "_layouts"
+    - "_sass"
+    - "_site"
+    - "css"
+    - "js"
+    - "assets"
+    - "_data/icon-types.yml"
+    - "_includes/lorem-ipsum.md"
+    - "_config*.yml"
+    - "README.md"
+    - ".*rc"
+    - ".ruby-version"
+    - ".gitignore"
+    - "Gemfile*"
