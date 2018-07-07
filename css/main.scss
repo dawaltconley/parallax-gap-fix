@@ -30,8 +30,11 @@ $perspective: 100;
     @include parallax-support {
         $scale: 1 - ($depth / $perspective);
         $height-adjust: calc((1 - (1 / #{$scale})) * (100vh - 100%) / -2);
+        $offset: abs($depth) - $perspective;
         top: $height-adjust;
         bottom: $height-adjust;
+        left: calc((#{$offset}vw - #{$offset}%));
+        width: calc(200vw - 100%);
         -webkit-transform-origin: right;
         transform-origin: right;
         -webkit-transform: translateZ($depth * 1px) scale($scale);
