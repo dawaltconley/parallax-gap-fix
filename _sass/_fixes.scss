@@ -4,12 +4,14 @@
 
 .fix-1a { // works best in chrome, firefox, and edge; doesn't work in safari
     & .parallax-page {
+        -webkit-perspective-origin: left;
         perspective-origin: left;
     }
     & .parallax-bg {
         &-deep,
         &-middle,
         &-shallow {
+            -webkit-transform-origin: left;
             transform-origin: left;
         }
     }
@@ -17,12 +19,14 @@
 
 .fix-1b { // only works in safari
     & .parallax-page {
+        -webkit-perspective-origin: center;
         perspective-origin: center;
     }
     & .parallax-bg {
         &-deep,
         &-middle,
         &-shallow {
+            -webkit-transform-origin: center;
             transform-origin: center;
         }
     }

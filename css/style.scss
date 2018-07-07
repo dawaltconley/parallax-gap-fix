@@ -6,7 +6,7 @@
 $perspective: 100;
 
 @mixin parallax-support {
-    @supports ((perspective: 1px) and (not (-webkit-overflow-scrolling: touch))) {
+    @supports (((-webkit-perspective: 1px) or (perspective: 1px)) and (not (-webkit-overflow-scrolling: touch))) {
         @content;
     }
 }
@@ -23,7 +23,9 @@ $perspective: 100;
         $height-adjust: calc((1 - (1 / #{$scale})) * (100vh - 100%) / -2);
         top: $height-adjust;
         bottom: $height-adjust;
+        -webkit-transform-origin: right;
         transform-origin: right;
+        -webkit-transform: translateZ($depth * 1px) scale($scale);
         transform: translateZ($depth * 1px) scale($scale);
     }
 }
