@@ -8,7 +8,7 @@ menu.onchange = function () {
     document.body.classList.remove(appliedFix);
     appliedFix = menu.selectedOptions[0].value;
     document.body.classList.add(appliedFix);
-    console.log("added " + appliedFix + "class to document body");
+    console.log("added " + appliedFix + " class to document body");
 }
 
 checkbox.onchange = function () {
