@@ -19,6 +19,11 @@ body {
         perspective: $perspective * 1px;
         -webkit-perspective-origin: right;
         perspective-origin: right;
+
+        > * {
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+        }
     }
 }
 
