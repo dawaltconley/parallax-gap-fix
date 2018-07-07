@@ -279,7 +279,7 @@ footer {
 // The Fix
 
 // works best in chrome, firefox, and edge; doesn't work in safari
-.fix-1 {
+.fix-1a {
   & .parallax-page {
     perspective-origin: left;
   }
@@ -293,7 +293,7 @@ footer {
 }
 
 // only works in safari
-.fix-2 {
+.fix-1b {
   & .parallax-page {
     perspective-origin: center;
   }
@@ -307,7 +307,7 @@ footer {
 }
 
 // works best in most browsers; misaligned in Safari but no white space
-.fix-3 {
+.fix-2a {
   & .parallax-group {
     $offset: 100;
     margin-left: calc(#{$offset}% - #{$offset}vw);
@@ -318,7 +318,7 @@ footer {
 }
 
 // like above but aligned in Safari, misaligned in others
-.fix-4 .parallax-group {
+.fix-2b .parallax-group {
   $offset: 50;
   margin-left: calc(#{$offset}% - #{$offset}vw);
   margin-right: calc(#{$offset}% - #{$offset}vw);
@@ -327,6 +327,6 @@ footer {
 }
 
 // removes scrollbars alltogether in webkit browsers
-.fix-5 ::-webkit-scrollbar {
+.fix-3 ::-webkit-scrollbar {
   display: none;
 }

@@ -290,38 +290,38 @@ footer p {
   margin-right: .3em;
 }
 
-.fix-1 .parallax-page {
+.fix-1a .parallax-page {
   -webkit-perspective-origin: left;
           perspective-origin: left;
 }
-.fix-1 .parallax-bg-deep, .fix-1 .parallax-bg-middle, .fix-1 .parallax-bg-shallow {
+.fix-1a .parallax-bg-deep, .fix-1a .parallax-bg-middle, .fix-1a .parallax-bg-shallow {
   -webkit-transform-origin: left;
           transform-origin: left;
 }
 
-.fix-2 .parallax-page {
+.fix-1b .parallax-page {
   -webkit-perspective-origin: center;
           perspective-origin: center;
 }
-.fix-2 .parallax-bg-deep, .fix-2 .parallax-bg-middle, .fix-2 .parallax-bg-shallow {
+.fix-1b .parallax-bg-deep, .fix-1b .parallax-bg-middle, .fix-1b .parallax-bg-shallow {
   -webkit-transform-origin: center;
           transform-origin: center;
 }
 
-.fix-3 .parallax-group {
+.fix-2a .parallax-group {
   margin-left: calc(100% - 100vw);
   margin-right: calc(100% - 100vw);
   padding-left: calc(100vw - 100%);
   padding-right: calc(100vw - 100%);
 }
 
-.fix-4 .parallax-group {
+.fix-2b .parallax-group {
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
   padding-left: calc(50vw - 50%);
   padding-right: calc(50vw - 50%);
 }
 
-.fix-5 ::-webkit-scrollbar {
+.fix-3 ::-webkit-scrollbar {
   display: none;
 }
