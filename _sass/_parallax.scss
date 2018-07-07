@@ -1,0 +1,48 @@
+/*
+ * Parallax
+ */
+
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.parallax-page {
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    @include parallax-support {
+        height: 100vh;
+        perspective: $perspective * 1px;
+        -webkit-perspective-origin: right;
+        perspective-origin: right;
+    }
+}
+
+.parallax-group {
+    position: relative;
+    background-color: transparent !important;
+    pointer-events: none;
+
+    > * {
+        pointer-events: auto;
+    }
+
+    @include parallax-support {
+        transform-style: preserve-3d;
+    }
+}
+
+.parallax-bg-deep {
+    @include parallax(-200);
+}
+
+.parallax-bg-middle {
+    @include parallax(-100);
+}
+
+.parallax-bg-shallow {
+    @include parallax(-50);
+}

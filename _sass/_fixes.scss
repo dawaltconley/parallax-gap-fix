@@ -1,0 +1,49 @@
+/*
+ * Fixes
+ */
+
+.fix-1a { // works best in chrome, firefox, and edge; doesn't work in safari
+    & .parallax-page {
+        perspective-origin: left;
+    }
+    & .parallax-bg {
+        &-deep,
+        &-middle,
+        &-shallow {
+            transform-origin: left;
+        }
+    }
+}
+
+.fix-1b { // only works in safari
+    & .parallax-page {
+        perspective-origin: center;
+    }
+    & .parallax-bg {
+        &-deep,
+        &-middle,
+        &-shallow {
+            transform-origin: center;
+        }
+    }
+}
+
+.fix-2a .parallax-group { // works best in most browsers; misaligned in Safari but no white space
+    $offset: 100;
+    margin-left: calc(#{$offset}% - #{$offset}vw);
+    margin-right: calc(#{$offset}% - #{$offset}vw);
+    padding-left: calc(#{$offset}vw - #{$offset}%);
+    padding-right: calc(#{$offset}vw - #{$offset}%);
+}
+
+.fix-2b .parallax-group { // like above but aligned in Safari, misaligned in others
+    $offset: 50;
+    margin-left: calc(#{$offset}% - #{$offset}vw);
+    margin-right: calc(#{$offset}% - #{$offset}vw);
+    padding-left: calc(#{$offset}vw - #{$offset}%);
+    padding-right: calc(#{$offset}vw - #{$offset}%);
+}
+
+.fix-3 ::-webkit-scrollbar { // removes scrollbars alltogether in webkit browsers
+    display: none;
+}

@@ -1,0 +1,35 @@
+---
+---
+
+// Sass
+
+$perspective: 100;
+
+@mixin parallax-support {
+    @supports ((perspective: 1px) and (not (-webkit-overflow-scrolling: touch))) {
+        @content;
+    }
+}
+
+@mixin parallax ($depth: 0) {
+    position: absolute !important;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    @include parallax-support {
+        $scale: 1 - ($depth / $perspective);
+        $height-adjust: calc((1 - (1 / #{$scale})) * (100vh - 100%) / -2);
+        top: $height-adjust;
+        bottom: $height-adjust;
+        transform-origin: right;
+        transform: translateZ($depth * 1px) scale($scale);
+    }
+}
+
+@import
+    "style",
+    "parallax",
+    "fixes"
+;
