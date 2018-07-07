@@ -3,73 +3,73 @@
 $perspective: 100;
 
 @mixin parallax-support {
-  @supports ((perspective: 1px) and (not (-webkit-overflow-scrolling: touch))) {
-    @content;
-  }
+    @supports ((perspective: 1px) and (not (-webkit-overflow-scrolling: touch))) {
+        @content;
+    }
 }
 
 @mixin parallax ($depth: 0) {
-  position: absolute !important;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+    position: absolute !important;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 
-  @include parallax-support {
-    $scale: 1 - ($depth / $perspective);
-    $height-adjust: calc((1 - (1 / #{$scale})) * (100vh - 100%) / -2);
-    top: $height-adjust;
-    bottom: $height-adjust;
-    transform-origin: right;
-    transform: translateZ($depth * 1px) scale($scale);
-  }
+    @include parallax-support {
+        $scale: 1 - ($depth / $perspective);
+        $height-adjust: calc((1 - (1 / #{$scale})) * (100vh - 100%) / -2);
+        top: $height-adjust;
+        bottom: $height-adjust;
+        transform-origin: right;
+        transform: translateZ($depth * 1px) scale($scale);
+    }
 }
 
 // Parallax
 
 html,
 body {
-  max-width: 100%;
-  overflow-x: hidden;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 .parallax-page {
-  position: relative;
-  overflow-y: auto;
-  overflow-x: hidden;
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
 
-  @include parallax-support {
-    height: 100vh;
-    perspective: $perspective * 1px;
-    -webkit-perspective-origin: right;
-    perspective-origin: right;
-  }
+    @include parallax-support {
+        height: 100vh;
+        perspective: $perspective * 1px;
+        -webkit-perspective-origin: right;
+        perspective-origin: right;
+    }
 }
 
 .parallax-group {
-  position: relative;
-  background-color: transparent !important;
-  pointer-events: none;
+    position: relative;
+    background-color: transparent !important;
+    pointer-events: none;
 
-  > * {
-    pointer-events: auto;
-  }
+    > * {
+        pointer-events: auto;
+    }
 
-  @include parallax-support {
-    transform-style: preserve-3d;
-  }
+    @include parallax-support {
+        transform-style: preserve-3d;
+    }
 }
 
 .parallax-bg-deep {
-  @include parallax(-200);
+    @include parallax(-200);
 }
 
 .parallax-bg-middle {
-  @include parallax(-100);
+    @include parallax(-100);
 }
 
 .parallax-bg-shallow {
-  @include parallax(-50);
+    @include parallax(-50);
 }
 
 // Styles
@@ -79,254 +79,254 @@ $bg-color: #EEEEEE;
 $link-color: #ffaaaa;
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.3rem;
-  font-size: 4vmin;
-  font-weight: 400;
-  line-height: 1.2;
-  background-color: red;
-  text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+    font-size: 4vmin;
+    font-weight: 400;
+    line-height: 1.2;
+    background-color: red;
+    text-align: center;
 }
 
 h1, h2 {
-  font-weight: 600;
+    font-weight: 600;
 }
 
 strong {
-  font-weight: 500;
+    font-weight: 500;
 }
 
 a {
-  color: $link-color;
-  text-decoration: none;
- 
-  &:hover {
-    text-decoration: underline;
-    cursor: pointer;
-  }
+    color: $link-color;
+    text-decoration: none;
 
-  &:visited {
-    color: lighten($link-color, 6%)
-  }
+    &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    &:visited {
+        color: lighten($link-color, 6%)
+    }
 }
 
 %flex-center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .content {
-  @extend %flex-center;
-  position: relative;
-  padding: 60px;
-  p {
-    max-width: 36em;
-  }
+    @extend %flex-center;
+    position: relative;
+    padding: 60px;
+    p {
+        max-width: 36em;
+    }
 }
 
 .base-layer {
-  position: relative;
-  color: $text-color;
-  background-color: $bg-color;
-  z-index: 1;
+    position: relative;
+    color: $text-color;
+    background-color: $bg-color;
+    z-index: 1;
 }
 
 .parallax-group {
-  color: $bg-color;
-  text-shadow: 1px 1px 4px $text-color;
+    color: $bg-color;
+    text-shadow: 1px 1px 4px $text-color;
 }
 
 footer {
-  color: $bg-color;
-  background-color: $text-color;
-  padding: 15px;
-  line-height: 1.4;
-  font-size: 16px;
-  p {
-    margin: 0;
-  }
+    color: $bg-color;
+    background-color: $text-color;
+    padding: 15px;
+    line-height: 1.4;
+    font-size: 16px;
+    p {
+        margin: 0;
+    }
 }
 
 .footer-table {
-  @media (min-width: 800px) {
-    display: table;
-    margin: 0 auto;
-    border-collapse: collapse;
-    table-layout: fixed;
-    line-height: 30px;
- 
-    p {
-      display: table-cell;
-      padding: 0 1em;
-      width: 50%;
- 
-      &:first-child {
-        text-align: right;
-        border-right: 1px solid mix($text-color, $bg-color, 90%);
-      }
+    @media (min-width: 800px) {
+        display: table;
+        margin: 0 auto;
+        border-collapse: collapse;
+        table-layout: fixed;
+        line-height: 30px;
+
+        p {
+            display: table-cell;
+            padding: 0 1em;
+            width: 50%;
+
+            &:first-child {
+                text-align: right;
+                border-right: 1px solid mix($text-color, $bg-color, 90%);
+            }
+        }
     }
-  }
 }
 
 .screen-height {
-  min-height: 100vh;
+    min-height: 100vh;
 }
 
 .bg-1, .bg-2, .bg-3 {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 
 .bg-1 {
-  background-image: url("https://images.pexels.com/photos/952670/pexels-photo-952670.jpeg");
+    background-image: url("https://images.pexels.com/photos/952670/pexels-photo-952670.jpeg");
 }
 
 .bg-2 {
-  background-image: url("https://images.pexels.com/photos/908286/pexels-photo-908286.jpeg");
+    background-image: url("https://images.pexels.com/photos/908286/pexels-photo-908286.jpeg");
 }
 
 .bg-3 {
-  $darken: .55;
-  background-image: linear-gradient(rgba(black, $darken), rgba(black, $darken)), url("https://images.pexels.com/photos/414634/pexels-photo-414634.jpeg")
+    $darken: .55;
+    background-image: linear-gradient(rgba(black, $darken), rgba(black, $darken)), url("https://images.pexels.com/photos/414634/pexels-photo-414634.jpeg")
 }
 
 .arrows {
-  $arrow-color: #b3b3b3;
-  $arrow-size: 30px;
-  $parallax-inset: 60px;
-  
-  &:before, &:after {
-    content: "";
-    position: absolute;
-    display: block;
-    left: calc(50% - #{$arrow-size});
-    border-top: 0 solid $arrow-color;
-    border-bottom: 0 solid $arrow-color;
-    border-left: $arrow-size solid transparent;
-    border-right: $arrow-size solid transparent;
-  }
+    $arrow-color: #b3b3b3;
+    $arrow-size: 30px;
+    $parallax-inset: 60px;
 
-  &:before {
-    top: 10px;
-    border-bottom-width: $arrow-size;
-  }
-
-  &:after {
-    bottom: 10px;
-    border-top-width: $arrow-size;
-  }
-  
-  @for $i from 1 through 3 {
-    $depth: nth(("shallow", "middle", "deep"), $i);
-    &.parallax-bg-#{$depth} {
-      $color: rgba(darken($arrow-color, $i * 14%), 1);
-      $size: $arrow-size - ($i * 4px);
-      &:before, &:after {
-        left: calc(50% - #{$size});
-        border-top-color: $color;
-        border-bottom-color: $color;
-        border-left-width: $size;
-        border-right-width: $size;
-      }
-      &:before {
-        top: $parallax-inset;
-        border-bottom-width: $size;
-      }
-      &:after {
-        bottom: $parallax-inset;
-        border-top-width: $size;
-      }
+    &:before, &:after {
+        content: "";
+        position: absolute;
+        display: block;
+        left: calc(50% - #{$arrow-size});
+        border-top: 0 solid $arrow-color;
+        border-bottom: 0 solid $arrow-color;
+        border-left: $arrow-size solid transparent;
+        border-right: $arrow-size solid transparent;
     }
-  }
+
+    &:before {
+        top: 10px;
+        border-bottom-width: $arrow-size;
+    }
+
+    &:after {
+        bottom: 10px;
+        border-top-width: $arrow-size;
+    }
+
+    @for $i from 1 through 3 {
+        $depth: nth(("shallow", "middle", "deep"), $i);
+        &.parallax-bg-#{$depth} {
+            $color: rgba(darken($arrow-color, $i * 14%), 1);
+            $size: $arrow-size - ($i * 4px);
+            &:before, &:after {
+                left: calc(50% - #{$size});
+                border-top-color: $color;
+                border-bottom-color: $color;
+                border-left-width: $size;
+                border-right-width: $size;
+            }
+            &:before {
+                top: $parallax-inset;
+                border-bottom-width: $size;
+            }
+            &:after {
+                bottom: $parallax-inset;
+                border-top-width: $size;
+            }
+        }
+    }
 }
 
 .hide-arrows .arrows {
-  &:before, &:after {
-    display: none;
-  }
+    &:before, &:after {
+        display: none;
+    }
 }
 
 #options {
-  position: fixed;
-  top: 30px;
-  left: 30px;
-  font-family: sans-serif;
-  font-size: 1.2rem;
-  z-index: 100;
-  text-align: left;
-  line-height: 1.5;
-  color: $text-color;
-  background-color: rgba($bg-color, 0.8);
-  padding: 8px;
-  border-radius: 5px;
-  
-  input {
-    vertical-align: middle;
-    position: relative;
-    bottom: .15em;
-    margin-right: .3em;
-  }
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    font-family: sans-serif;
+    font-size: 1.2rem;
+    z-index: 100;
+    text-align: left;
+    line-height: 1.5;
+    color: $text-color;
+    background-color: rgba($bg-color, 0.8);
+    padding: 8px;
+    border-radius: 5px;
+
+    input {
+        vertical-align: middle;
+        position: relative;
+        bottom: .15em;
+        margin-right: .3em;
+    }
 }
 
 // The Fix
 
 // works best in chrome, firefox, and edge; doesn't work in safari
 .fix-1a {
-  & .parallax-page {
-    perspective-origin: left;
-  }
-  & .parallax-bg {
-    &-deep,
-    &-middle,
-    &-shallow {
-      transform-origin: left;
+    & .parallax-page {
+        perspective-origin: left;
     }
-  }
+    & .parallax-bg {
+        &-deep,
+        &-middle,
+        &-shallow {
+            transform-origin: left;
+        }
+    }
 }
 
 // only works in safari
 .fix-1b {
-  & .parallax-page {
-    perspective-origin: center;
-  }
-  & .parallax-bg {
-    &-deep,
-    &-middle,
-    &-shallow {
-      transform-origin: center;
+    & .parallax-page {
+        perspective-origin: center;
     }
-  }
+    & .parallax-bg {
+        &-deep,
+        &-middle,
+        &-shallow {
+            transform-origin: center;
+        }
+    }
 }
 
 // works best in most browsers; misaligned in Safari but no white space
 .fix-2a {
-  & .parallax-group {
-    $offset: 100;
-    margin-left: calc(#{$offset}% - #{$offset}vw);
-    margin-right: calc(#{$offset}% - #{$offset}vw);
-    padding-left: calc(#{$offset}vw - #{$offset}%);
-    padding-right: calc(#{$offset}vw - #{$offset}%);
-  }
+    & .parallax-group {
+        $offset: 100;
+        margin-left: calc(#{$offset}% - #{$offset}vw);
+        margin-right: calc(#{$offset}% - #{$offset}vw);
+        padding-left: calc(#{$offset}vw - #{$offset}%);
+        padding-right: calc(#{$offset}vw - #{$offset}%);
+    }
 }
 
 // like above but aligned in Safari, misaligned in others
 .fix-2b .parallax-group {
-  $offset: 50;
-  margin-left: calc(#{$offset}% - #{$offset}vw);
-  margin-right: calc(#{$offset}% - #{$offset}vw);
-  padding-left: calc(#{$offset}vw - #{$offset}%);
-  padding-right: calc(#{$offset}vw - #{$offset}%);
+    $offset: 50;
+    margin-left: calc(#{$offset}% - #{$offset}vw);
+    margin-right: calc(#{$offset}% - #{$offset}vw);
+    padding-left: calc(#{$offset}vw - #{$offset}%);
+    padding-right: calc(#{$offset}vw - #{$offset}%);
 }
 
 // removes scrollbars alltogether in webkit browsers
 .fix-3 ::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
