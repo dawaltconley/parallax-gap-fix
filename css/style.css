@@ -1,0 +1,233 @@
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.parallax-page {
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+@supports ((-webkit-perspective: 1px) or (perspective: 1px)) and (not (-webkit-overflow-scrolling: touch)) {
+  .parallax-page {
+    height: 100vh;
+    -webkit-perspective: 100px;
+            perspective: 100px;
+    -webkit-perspective-origin: right;
+    perspective-origin: right;
+  }
+}
+
+.parallax-group {
+  position: relative;
+  background-color: transparent !important;
+  pointer-events: none;
+}
+.parallax-group > * {
+  pointer-events: auto;
+}
+@supports ((-webkit-perspective: 1px) or (perspective: 1px)) and (not (-webkit-overflow-scrolling: touch)) {
+  .parallax-group {
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+  }
+}
+
+.parallax-bg-deep {
+  position: absolute !important;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+@supports ((-webkit-perspective: 1px) or (perspective: 1px)) and (not (-webkit-overflow-scrolling: touch)) {
+  .parallax-bg-deep {
+    top: calc((1 - (1 / 3)) * (100vh - 100%) / -2);
+    bottom: calc((1 - (1 / 3)) * (100vh - 100%) / -2);
+    -webkit-transform-origin: right;
+            transform-origin: right;
+    -webkit-transform: translateZ(-200px) scale(3);
+            transform: translateZ(-200px) scale(3);
+  }
+}
+
+.parallax-bg-middle {
+  position: absolute !important;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+@supports ((-webkit-perspective: 1px) or (perspective: 1px)) and (not (-webkit-overflow-scrolling: touch)) {
+  .parallax-bg-middle {
+    top: calc((1 - (1 / 2)) * (100vh - 100%) / -2);
+    bottom: calc((1 - (1 / 2)) * (100vh - 100%) / -2);
+    -webkit-transform-origin: right;
+            transform-origin: right;
+    -webkit-transform: translateZ(-100px) scale(2);
+            transform: translateZ(-100px) scale(2);
+  }
+}
+
+.parallax-bg-shallow {
+  position: absolute !important;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+@supports ((-webkit-perspective: 1px) or (perspective: 1px)) and (not (-webkit-overflow-scrolling: touch)) {
+  .parallax-bg-shallow {
+    top: calc((1 - (1 / 1.5)) * (100vh - 100%) / -2);
+    bottom: calc((1 - (1 / 1.5)) * (100vh - 100%) / -2);
+    -webkit-transform-origin: right;
+            transform-origin: right;
+    -webkit-transform: translateZ(-50px) scale(1.5);
+            transform: translateZ(-50px) scale(1.5);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 1.2rem;
+  font-size: 3vmin;
+  color: white;
+  text-align: center;
+}
+
+.bg1 {
+  background-image: url("https://images.pexels.com/photos/370799/pexels-photo-370799.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: none;
+}
+
+.bg2 {
+  background-image: url("https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: none;
+}
+
+.screen-height {
+  height: 600px;
+  min-height: 100vh;
+}
+
+.content, .relative-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  position: relative;
+  padding: 60px;
+}
+.content p {
+  max-width: 36em;
+}
+
+.arrows:before {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 10px;
+  left: calc(50% - 30px);
+  border-bottom: 30px solid white;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+}
+.arrows:after {
+  content: "";
+  position: absolute;
+  display: block;
+  bottom: 10px;
+  left: calc(50% - 30px);
+  border-top: 30px solid white;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+}
+.parallax-group .arrows:before {
+  top: 60px;
+}
+.parallax-group .arrows:after {
+  bottom: 60px;
+}
+
+.parallax-bg-deep:before, .parallax-bg-deep:after {
+  border-top-color: #ff7777;
+  border-bottom-color: #ff7777;
+}
+
+.parallax-bg-middle:before, .parallax-bg-middle:after {
+  border-top-color: #77ff77;
+  border-bottom-color: #77ff77;
+}
+
+.parallax-bg-shallow:before, .parallax-bg-shallow:after {
+  border-top-color: #7777ff;
+  border-bottom-color: #7777ff;
+}
+
+.base-layer {
+  position: relative;
+  background-color: #EEAABB;
+  z-index: 1;
+}
+
+#fix-options {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  font-size: 1.2rem;
+  z-index: 100;
+}
+
+.relative-content {
+  width: 50%;
+  padding: 30px;
+  color: #EEAABB;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.fix-1 .parallax-page {
+  -webkit-perspective-origin: left;
+          perspective-origin: left;
+}
+.fix-1 .parallax-bg-deep, .fix-1 .parallax-bg-middle, .fix-1 .parallax-bg-shallow {
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.fix-2 .parallax-page {
+  -webkit-perspective-origin: center;
+          perspective-origin: center;
+}
+.fix-2 .parallax-bg-deep, .fix-2 .parallax-bg-middle, .fix-2 .parallax-bg-shallow {
+  -webkit-transform-origin: center;
+          transform-origin: center;
+}
+
+.fix-3 .parallax-group {
+  margin-left: calc(100% - 100vw);
+  margin-right: calc(100% - 100vw);
+  padding-left: calc(100vw - 100%);
+  padding-right: calc(100vw - 100%);
+}
+
+.fix-4 .parallax-group {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding-left: calc(50vw - 50%);
+  padding-right: calc(50vw - 50%);
+}
+
+.fix-5 ::-webkit-scrollbar {
+  display: none;
+}

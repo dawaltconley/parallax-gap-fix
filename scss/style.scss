@@ -1,0 +1,254 @@
+// Sass
+
+$bg-images: (
+  bg1: "https://images.pexels.com/photos/370799/pexels-photo-370799.jpeg",
+  bg2: "https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg"
+);
+
+$perspective: 100;
+
+@mixin parallax-support {
+    @supports ((perspective: 1px) and (not (-webkit-overflow-scrolling: touch))) {
+        @content;
+    }
+}
+
+@mixin parallax ($depth: 0) {
+    position: absolute !important;
+    top: 0; bottom: 0; left: 0; right: 0;
+
+    @include parallax-support {
+        $scale: 1 - ($depth / $perspective);
+        $height-adjust: calc((1 - (1 / #{$scale})) * (100vh - 100%) / -2);
+        top: $height-adjust; bottom: $height-adjust;
+        transform-origin: right;
+        transform: translateZ($depth * 1px) scale($scale);
+    }
+}
+
+// Parallax
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.parallax-page {
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    @include parallax-support {
+        height: 100vh;
+        perspective: $perspective * 1px;
+        -webkit-perspective-origin: right;
+        perspective-origin: right;
+    }
+}
+
+.parallax-group {
+    position: relative;
+    background-color: transparent !important;
+    pointer-events: none;
+
+    > * {
+        pointer-events: auto;
+    }
+
+    @include parallax-support {
+        transform-style: preserve-3d;
+    }
+}
+
+.parallax-bg-deep {
+    @include parallax(-200);
+}
+
+.parallax-bg-middle {
+    @include parallax(-100);
+}
+
+.parallax-bg-shallow {
+    @include parallax(-50);
+}
+
+// Styles
+
+$base-bg-color: #EEAABB;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 1.2rem;
+  font-size: 3vmin;
+  color: white;
+  text-align: center;
+}
+
+@each $name, $img in $bg-images {
+  .#{$name} {
+    background-image: url($img);
+    background-size: cover;
+    background-position: center;
+    background-repeat: none;
+  }
+}
+
+.screen-height {
+  height: 600px;
+  min-height: 100vh;
+}
+
+%flex-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  @extend %flex-center;
+  position: relative;
+  padding: 60px;
+  p {
+    max-width: 36em;
+  }
+}
+
+.arrows {  
+  $arrow-size: 30px;
+  $parallax-inset: 60px;
+  
+  &:before {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 10px;
+    left: calc(50% - #{$arrow-size});
+    border-bottom: $arrow-size solid white;
+    border-left: $arrow-size solid transparent;
+    border-right: $arrow-size solid transparent;
+  }
+    
+  &:after {
+    content: "";
+    position: absolute;
+    display: block;
+    bottom: 10px;
+    left: calc(50% - #{$arrow-size});
+    border-top: $arrow-size solid white;
+    border-left: $arrow-size solid transparent;
+    border-right: $arrow-size solid transparent;
+  }
+  
+  .parallax-group &:before {
+    top: $parallax-inset;
+  }
+  
+  .parallax-group &:after {
+    bottom: $parallax-inset;
+  }
+}
+
+.parallax-bg-deep {
+  &:before, &:after{
+    border-top-color: rgba(#FF7777, 1);
+    border-bottom-color: rgba(#FF7777, 1);
+  }
+}
+
+.parallax-bg-middle {
+  &:before, &:after{
+    border-top-color: rgba(#77FF77, 1);
+    border-bottom-color: rgba(#77FF77, 1);
+  }
+}
+
+.parallax-bg-shallow {
+  &:before, &:after{
+    border-top-color: rgba(#7777FF, 1);
+    border-bottom-color: rgba(#7777FF, 1);
+  }
+}
+
+.base-layer {
+  position: relative;
+  background-color: $base-bg-color;
+  z-index: 1;
+}
+
+#fix-options {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  font-size: 1.2rem;
+  z-index: 100;
+}
+
+.relative-content {
+  @extend %flex-center;
+  width: 50%;
+  padding: 30px;
+  color: $base-bg-color;
+  background-color: white;
+  border-radius: 10px
+}
+
+// The Fix
+
+// works best in chrome, firefox, and edge; doesn't work in safari
+.fix-1 {
+  & .parallax-page {
+    perspective-origin: left;
+  }
+//  & .parallax-group {
+//    width: calc(200% - 100vw);
+//  }
+  & .parallax-bg {
+    &-deep, &-middle, &-shallow {
+      transform-origin: left;
+    }
+  }
+}
+
+// only works in safari
+.fix-2 {
+  & .parallax-page {
+    perspective-origin: center;
+  }
+//  & .parallax-group {
+//    width: calc(200% - 100vw);
+//  }
+  & .parallax-bg {
+    &-deep, &-middle, &-shallow {
+      transform-origin: center;
+    }
+  }
+}
+
+// works best in most browsers; misaligned in Safari but no white space
+.fix-3 {
+  & .parallax-group {
+    $offset: 100;
+    margin-left: calc(#{$offset}% - #{$offset}vw);
+    margin-right: calc(#{$offset}% - #{$offset}vw);
+    padding-left: calc(#{$offset}vw - #{$offset}%);
+    padding-right: calc(#{$offset}vw - #{$offset}%);
+  }
+}
+
+// like above but aligned in Safari, misaligned in others
+.fix-4 .parallax-group {
+  $offset: 50;
+  margin-left: calc(#{$offset}% - #{$offset}vw);
+  margin-right: calc(#{$offset}% - #{$offset}vw);
+  padding-left: calc(#{$offset}vw - #{$offset}%);
+  padding-right: calc(#{$offset}vw - #{$offset}%);
+}
+
+// removes scrollbars alltogether in webkit browsers
+.fix-5 ::-webkit-scrollbar {
+  display: none;
+}

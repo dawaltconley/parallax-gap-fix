@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Parallax Gap Fix</title>
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  <select id="fix-options">
+  <option value="null">Bug</option>
+  <option value="fix-1">Fix 1</option>
+  <option value="fix-2">Fix 2</option>
+  <option value="fix-3">Fix 3</option>
+  <option value="fix-4">Fix 4</option>
+  <option value="fix-5">Fix 5</option>
+</select>
+<div class="parallax-page">
+  <div class="parallax-group screen-height">
+    <div class="parallax-bg-middle content arrows">
+      <h1>Parallax Gap Fix</h1>
+      <p>This parallax page works fine without scrollbars, or with the default Mac scrollbars for trackpads, which do not change the width of the scrolling element.</p>
+    </div>
+    <div class="parallax-bg-deep bg1 arrows">
+    </div>
+  </div>
+  <div class="content base-layer screen-height arrows">
+    <h2>Try forcing scrollbars</h2>
+    <p>On Mac, you can do this by going to <code>Settings > General</code> and setting "Show scroll bars" to "Always." This also happens under the default settings whenever a USB mouse is connected.</p>
+  </div>
+  <div class="parallax-group screen-height">
+    <div class="parallax-bg-shallow content arrows">
+      <h2>Do you see it now?</h2>
+      <div class="relative-content">
+        <p>There should be a strip of white space to the left of this parallax element. This is because the scrollbar changes the inner width of an element, but not the total size, in which the 3D space is rendered.</p>
+      </div>
+      <!--<p>The scrolling!</p>-->
+    </div>
+    <div class="parallax-bg-middle bg2 arrows">
+    </div>
+  </div>
+  <div class="content base-layer screen-height arrows">
+    <h2>How do I fix it?</h2>
+    <div class="relative-content">
+      <p>You can try some of my fixes using the menu in the top left. Unfortunately, none of them are perfect. Safari seems to render 3D space differently than every other major browser. Fixes 1 and 3 work everywhere except Safari. Fixes 2 and 4 only work on Safari.</p>
+      <p>At the moment, fix 3 seems to be the best compromise all around</p>
+    </div>
+  </div>
+</div>
+  
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>
