@@ -1,8 +1,17 @@
 ---
 ---
 
-// Sass
+// Styles
+$text-color: #222233;
+$bg-color: #EEEEEE;
+$link-color: #ffaaaa;
 
+// Images
+$sand: url({{ site.baseurl | append: '/images/sand.jpeg' }});
+$pavement: url({{ site.baseurl | append: '/images/pavement.jpeg' }});
+$clouds: url({{ site.baseurl | append: '/images/clouds.jpeg' }});
+
+// Parallax
 $perspective: 100;
 
 @mixin parallax-support {
