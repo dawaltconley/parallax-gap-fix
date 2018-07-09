@@ -119,7 +119,7 @@ Remember too that this issue will _only_ arise for Safari users who are also usi
 
 It came to my attention, shortly after making this, that a [newer version](https://keithclark.co.uk/articles/practical-css-parallax/smooth-scroll/) of Keith Clark's parallax demo did not seem to have this problem. There is no visible strip on that page when scrollbars are turned on.
 
-The reason for that is that, in this demo Keith is achieving the affect by pulling his "foreground" elements _up_ out of the 3D space, whereas in the previous demo (and my own), we are pushing the "background" elements _back_. The foreground parallax elements _are_ also leaving a gap, but because of the skewed perspective, that gap is on the _right_ side of the screen, hidden under the scrollbar!
+The reason is that, in this demo, Keith is achieving the affect by pulling his "foreground" elements _up_ out of the 3D space, whereas in the previous demo (and my own), we are pushing the "background" elements _back_. The foreground parallax elements _are_ also leaving a gap, but because of the skewed perspective, that gap is on the _right_ side of the screen, hidden under the scrollbar!
 
 I like this solution, and I think it's practical in some cases, but here are some arguments against it:
 
