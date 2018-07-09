@@ -1,6 +1,23 @@
 # Parallax Gap Fix
 
-This README and the corresponding [demo](https://dawaltconley.github.io/parallax-gap-fix/) offer some solutions to a bug in pure-CSS parallax websites, which is caused by certain system scrollbars.
+This README and the corresponding [demo](https://dawaltconley.github.io/parallax-gap-fix/) offer some solutions to a bug in pure-CSS parallax websites, which is caused by certain system scrollbars. For reference, the page layout looks something like this:
+
+```
+<body>
+    <div class="parallax-page">
+        <div class="parallax-group">
+            <div class="parallax-bg-foo"></div>
+            <div class="parallax-bg-bar"></div>
+        </div>
+        <div>
+            Non-parallax content
+        </div>
+        <div class="parallax-group">
+            <div class="parallax-bg-foobar"></div>
+        </div>
+    </div>
+</body>
+```
 
 ## The Problem
 
