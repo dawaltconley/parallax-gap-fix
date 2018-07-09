@@ -7,13 +7,9 @@
         -webkit-perspective-origin: left;
         perspective-origin: left;
     }
-    & .parallax-bg {
-        &-deep,
-        &-middle,
-        &-shallow {
-            -webkit-transform-origin: left;
-            transform-origin: left;
-        }
+    & %parallax-bg {
+        -webkit-transform-origin: left;
+        transform-origin: left;
     }
 }
 
@@ -22,13 +18,9 @@
         -webkit-perspective-origin: center;
         perspective-origin: center;
     }
-    & .parallax-bg {
-        &-deep,
-        &-middle,
-        &-shallow {
-            -webkit-transform-origin: center;
-            transform-origin: center;
-        }
+    & %parallax-bg {
+        -webkit-transform-origin: center;
+        transform-origin: center;
     }
 }
 

@@ -47,6 +47,19 @@ body {
     }
 }
 
+%parallax-bg { // extended by parallax mixin
+    position: absolute !important;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    @include parallax-support {
+        -webkit-transform-origin: right;
+        transform-origin: right;
+    }
+}
+
 .parallax-bg-deep {
     @include parallax(-200);
 }
