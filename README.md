@@ -33,7 +33,7 @@ You can see this clearly in [the demo I made](https://dawaltconley.github.io/par
 
 ### Fix 1a
 
-This fix takes the intuitive method of changing the [`perspective-origin`](https://github.com/dawaltconley/parallax-gap-fix/blob/5be641252ce80f6a6d49e5e9868925ea7de72060/_sass/_parallax.scss#L26) and [`transform-origin`](https://github.com/dawaltconley/parallax-gap-fix/blob/5be641252ce80f6a6d49e5e9868925ea7de72060/_sass/_parallax.scss#L59) properties. These are set to `right`, based on a tip from Keith Clark's original article that this prevents unwanted horizontal scrolling in webkit browsers. But I've not been able to reproduce that problem so maybe it was fixed. In any case, this pushes the content to the right, into the scrollbar, and away from the left of the viewport. So let's just push them left instead:
+This fix takes the intuitive method of changing the [`perspective-origin`](https://github.com/dawaltconley/parallax-gap-fix/blob/master/_sass/_parallax.scss#L26) and [`transform-origin`](https://github.com/dawaltconley/parallax-gap-fix/blob/master/_sass/_parallax.scss#L59) properties. These are set to `right`, based on a tip from Keith Clark's original article that this prevents unwanted horizontal scrolling in webkit browsers. But I've not been able to reproduce that problem so maybe it was fixed. In any case, this pushes the content to the right, into the scrollbar, and away from the left of the viewport. So let's just push them left instead:
 
 ```
 .parallax-page {
