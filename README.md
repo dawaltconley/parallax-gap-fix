@@ -88,15 +88,15 @@ There is one fix, however, that works across all Webkit broswers, including Safa
 }
 ```
 
-The scrollbar is gone, so there is no problem calculating the 3D space. Combined with fix 1a or 1b above, this would align parallax elements accross all browsers, under all conditions.
+The scrollbar is gone, so there is no problem calculating the 3D space. Combined with [Fix 1a](#fix-1a) above, this would align parallax elements accross all browsers, under all conditions.
 
 Unfortunately, it means removing the scrollbar: an important navigation tool for many people. Since, in most cases, the scrollbar will only appear if the user explicitely _told_ their system to put it there, I am against this solution.
 
 ## The Solution
 
-I recommend using Fix 2a. It aligns elements on the majority of browsers, and even though they are out of alignment in Safari, they at least overflow the `parallax-page` so that there is no gap for the document body to peek through---a much more noticeable problem than alignment issues!
+I recommend using [Fix 2a](#fix-2a). It aligns elements on the majority of browsers, and even though they are out of alignment in Safari, they at least overflow the `parallax-page` so that there is no gap for the document body to peek through---a much more noticeable problem than alignment issues!
 
-Remember too that this issue will _only_ arise for Safari users who are also using a USB Mouse, or who have scrollbars manually turned on. The only downside to this approach is that parallax elements get slightly bloated accross all browsers. If this really bugs you, you can always use Fix 1a and target Safari with PHP or some clever Javascripting to correct for its alignment issues.
+Remember too that this issue will _only_ arise for Safari users who are also using a USB Mouse, or who have scrollbars manually turned on. The only downside to this approach is that parallax elements get slightly bloated accross all browsers. If this really bugs you, you can always use [Fix 1a](#fix-1a) and target Safari with PHP or some clever Javascripting to correct for its alignment issues.
 
 ## An alternative approach
 
