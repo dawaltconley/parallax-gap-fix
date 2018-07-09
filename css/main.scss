@@ -14,23 +14,9 @@ $clouds: url({{ site.baseurl | append: '/images/clouds.jpeg' }});
 // Parallax
 $perspective: 100;
 
-@mixin parallax-support {
-    @supports (((-webkit-perspective: 1px) or (perspective: 1px)) and (not (-webkit-overflow-scrolling: touch))) {
-        @content;
-    }
-}
-
-@mixin parallax ($depth: 0) {
-    @extend %parallax-bg;
-    @include parallax-support {
-        $scale: 1 - ($depth / $perspective);
-        $height-adjust: calc((1 - (1 / #{$scale})) * (100vh - 100%) / -2);
-        top: $height-adjust;
-        bottom: $height-adjust;
-        -webkit-transform: translateZ($depth * 1px) scale($scale);
-        transform: translateZ($depth * 1px) scale($scale);
-    }
-}
+@import
+    "parallax-mixins"
+;
 
 @import
     "style",
