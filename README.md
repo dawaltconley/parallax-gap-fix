@@ -111,7 +111,7 @@ Unfortunately, it means removing the scrollbar: an important navigation tool for
 
 ## The Solution
 
-I recommend using [Fix 2a](#fix-2a). It aligns elements on the majority of browsers, and even though they are out of alignment in Safari, they at least overflow the `parallax-page` so that there is no gap for the document body to peek through---a much more noticeable problem than alignment issues!
+I recommend using [Fix 2a](#fix-2a). It aligns elements on the majority of browsers, and even though they are out of alignment in Safari, they at least overflow the `parallax-page` so that there is no gap for the document body to peek through—usually a much more noticeable problem than alignment issues!
 
 Remember too that this issue will _only_ arise for Safari users who are also using a USB Mouse, or who have scrollbars manually turned on. The only downside to this approach is that parallax elements get slightly bloated accross all browsers. If this really bugs you, you can always use [Fix 1a](#fix-1a) and target Safari with PHP or some clever Javascripting to correct for its alignment issues.
 
