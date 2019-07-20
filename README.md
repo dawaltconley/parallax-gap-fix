@@ -65,7 +65,7 @@ This is because Safari is the only browser that calculates the size of its 3D sp
 
 ### Fix 2a
 
-So let's try something else. The problem isn't really the `perspective-origin`, since this would have no effect if `parallax-group` child elements were just centered within their `parallax-page` parent. Here's how we do that:
+So let's try something else. The problem isn't really the `perspective-origin`, since this would have no effect if `parallax-group` child elements were just sitting flush with their `parallax-page` parent. Here's how we do that:
 
 ```
 .parallax-group {
