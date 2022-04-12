@@ -14,30 +14,6 @@ emptyArray: [] # variable for easy array creation
 auto_scroll: false # enables smooth scrolling for all same-page links using zenscroll
 bg_testing: false # turn on to enable the bg-testing.html include
 
-image_bp: # breakpoints used for creating responsive images
-  - x: 2880
-    y: 1800
-  - x: 2560
-    y: 1600
-  - x: 2160
-    y: 1440
-  - x: 1920
-    y: 1200
-  - x: 1400
-    y: 900
-  - x: 1280
-    y: 800
-  - x: 1024
-    y: 768
-  - x: 960
-    y: 640
-  - x: 800
-    y: 480
-  - x: 640
-    y: 360
-  - x: 480
-    y: 320
-
 # Build settings
 
 markdown: kramdown
