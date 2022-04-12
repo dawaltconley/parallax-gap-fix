@@ -2,7 +2,7 @@
 
 This README and the corresponding [demo](https://dawaltconley.github.io/parallax-gap-fix/) offer some solutions to a bug in pure-CSS parallax websites, which is caused by certain system scrollbars. For reference, the page layout looks something like this:
 
-```
+```html
 <body>
     <div class="parallax-page">
         <div class="parallax-group">
@@ -35,7 +35,7 @@ You can see this clearly in [the demo I made](https://dawaltconley.github.io/par
 
 This fix takes the intuitive method of changing the [`perspective-origin`](https://github.com/dawaltconley/parallax-gap-fix/blob/master/_sass/_parallax.scss#L26) and [`transform-origin`](https://github.com/dawaltconley/parallax-gap-fix/blob/master/_sass/_parallax.scss#L59) properties. These are set to `right`, based on a tip from Keith Clark's original article that this prevents unwanted horizontal scrolling in webkit browsers. But I've not been able to reproduce that problem so maybe it was fixed. In any case, this pushes the content to the right, into the scrollbar, and away from the left of the viewport. So let's just push them left instead:
 
-```
+```scss
 .parallax-page {
     perspective-origin: left;
 }
@@ -51,7 +51,7 @@ It works! The background elements are sitting flush against the viewport and are
 
 If you try Fix 1a in Safari, you'll see that the red strip of the document body is still there, only now on the right side of the screen. If you want to achieve the same effect in Safari, you'll need to set these properties to `center` instead.
 
-```
+```scss
 .parallax-page {
     perspective-origin: center;
 }
@@ -67,7 +67,7 @@ This is because Safari is the only browser that calculates the size of its 3D sp
 
 So let's try something else. The problem isn't really the `perspective-origin`, since this would have no effect if `parallax-group` child elements were just sitting flush with their `parallax-page` parent. Here's how we do that:
 
-```
+```scss
 .parallax-group {
     margin-left: calc(100% - 100vw);
     margin-right: calc(100% - 100vw);
@@ -84,7 +84,7 @@ This makes the `parallax-group` elements one scrollbar's-width wider than their 
 
 Except on Safari, where they don't. The problem is the same as before: Safari calculates the 3D space based on the outer width of the `parallax-page` element. So we need to decrease the margin offset to one that will find the center of `paralax-page`'s outer width. With a `perspective-origin` set to `right`, that looks like this:
 
-```
+```scss
 .parallax-group {
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
@@ -99,7 +99,7 @@ Unfortunately, there doesn't seem to be any one alignment that will work across 
 
 There is one fix, however, that works across all Webkit broswers, including Safari:
 
-```
+```scss
 ::-webkit-scrollbar {
     display: none;
 }
