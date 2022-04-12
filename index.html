@@ -51,25 +51,24 @@ layout: default
     <p>You can try some of my fixes using the menu in the top left. The first
     pair modifies the <code>perspective-origin</code> and
     <code>transform-origin</code> properties. The second adds padding and
-    negative margins to offset the scrollbar. Unfortunately, none of them
-    are perfect.</p>
+    negative margins to offset the scrollbar.</p>
   </div>
   <div class="parallax-group screen-height">
     <div class="parallax-bg-middle bg-3 arrows"></div>
     <div class="parallax-bg-shallow content arrows">
       <h2>Browser Inconsistencies</h2>
-      <p>Safari seems to render 3D space differently than other modern
-      browsers. Fixes 1a and 2a are slightly misaligned on Safari, while fixes
-      1b and 2b only work on Safari. Fix 3 removes the scrollbar entirely, but
-      only works in webkit browsers.</p>
+      <p>When I initially wrote this in  2018, Safari rendered 3D space
+      differently than other modern browsers, making every solution imperfect.
+      Fixes 1a and 2a were slightly misaligned on Safari, while fixes 1b and 2b
+      only worked on Safari.</p>
     </div>
   </div>
   <div class="content base-layer screen-height arrows">
     <h2>Verdict?</h2>
-    <p>At the moment, <strong>Fix 2a</strong> seems to be the best solution all
-    around. Parallax elements are misaligned on Safari but still fill the 3D
-    space so that no document body is visible. A combination of 2a and 3 would
-    center the alignment accross all browsers at the cost of accessibility.</p>
+    <p>At least since Safari 14, this is no longer a problem. Fixes 1a and 2a
+    are aligned across all modern browsers, and the extra padding of fixes 2a
+    and 2b, which accounted for browser inconsistencies, is no longer needed.
+    <strong>Fix 2a is the best solution.</strong></p>
   </div>
   <footer>
     <div class="footer-table">
