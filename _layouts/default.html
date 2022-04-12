@@ -3,13 +3,41 @@
 
   {% include head.html %}
 
-  {% if page.itemtype %}
-    <body itemscope itemtype="{{ page.itemtype }}">
-  {% else %}
-    <body>
-  {% endif %}
+  <body>
 
-    {{ content }}
+    <div id="options">
+      <select id="fix-options">
+        <option value="null">Original</option>
+        <option value="fix-1a">Fix 1a</option>
+        <option value="fix-1b">Fix 1b</option>
+        <option value="fix-2a">Fix 2a</option>
+        <option value="fix-2b">Fix 2b</option>
+        <option value="fix-3">Fix 3</option>
+      </select>
+      <div>
+        <label for="toggle-center">
+          <input type="checkbox" id="toggle-center">
+          Show Center
+        </label>
+      </div>
+    </div>
+
+    <div class="parallax-page">
+
+      {{ content }}
+
+      <footer>
+        <div class="footer-table">
+          <p>Copyright © 2018 Dylan Awalt-Conley</p>
+          <p>
+            Have a better solution?
+            <a href="https://github.com/dawaltconley/parallax-gap-fix">
+              <i class="fa fa-github fa-fw fa-lg">&nbsp;</i>Let me know
+            </a>
+          </p>
+        </div>
+      </footer>
+    </div>
 
     {% include scripts.html %}
 

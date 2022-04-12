@@ -41,6 +41,9 @@ image_bp: # breakpoints used for creating responsive images
 # Build settings
 
 markdown: kramdown
+kramdown:
+  parse_block_html: true
+
 exclude:
   - "README.md"
   - "Gemfile"
