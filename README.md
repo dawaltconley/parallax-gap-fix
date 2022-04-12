@@ -18,7 +18,6 @@ This README and the corresponding [demo](https://dawaltconley.github.io/parallax
     </div>
 </body>
 ```
-
 ## The Problem
 
 I'm a big fan of [Keith Clark's Pure CSS parallax technique](https://keithclark.co.uk/articles/pure-css-parallax-websites/) and have been using it with some success on one of my own sites. Recently, however, I noticed that the background parallax elements, [even in his own demo](https://keithclark.co.uk/articles/pure-css-parallax-websites/demo3-webkit-overflow-fix/), were not sitting flush on the left side of the screen. They left a small gap, the size of which depends on how far back in the 3D space they were rendered.
@@ -30,6 +29,12 @@ The scrollbar changes the width of the main view, without changing the 3D perspe
 You can see this clearly in [the demo I made](https://dawaltconley.github.io/parallax-gap-fix/) by checking "Show Center".
 
 ## My Fixes
+
+### Update: April 2022
+
+As of at least Safari 14.1.2, Safari now treats 3D space the same as other modern browsers. This means that fixes 1a and 2a are aligned across all modern browsers, and the extra padding of fixes 2a and 2b, which accounted for browser inconsistencies, is no longer needed.
+
+You can safely use [**Fix 1a**](#fix-1a) and get proper alignment on all browsers.
 
 ### Fix 1a
 
