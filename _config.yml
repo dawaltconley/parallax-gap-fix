@@ -18,7 +18,9 @@ bg_testing: false # turn on to enable the bg-testing.html include
 
 markdown: kramdown
 kramdown:
+  input: GFM
   parse_block_html: true
+  syntax_highlighter: rouge
 
 exclude:
   - "README.md"
