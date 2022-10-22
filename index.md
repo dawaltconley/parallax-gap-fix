@@ -69,6 +69,6 @@ At least since Safari 14.1.2, this is no longer a problem. Fixes
 padding of fixes 2a and 2b, which accounted for browser
 inconsistencies, is no longer needed.
 
-**Fix 2a is the best solution.**
+**Fix 1a is the best solution.**
 
 </div>
