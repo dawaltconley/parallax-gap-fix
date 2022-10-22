@@ -52,6 +52,26 @@ a {
     }
 }
 
+pre {
+    line-height: 1.2;
+    overflow-x: auto;
+}
+
+.highlight {
+    padding: 1em;
+    border-radius: 1em;
+    font-size: 0.9em;
+
+    pre {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.highlighter-rouge {
+    max-width: 100%;
+}
+
 %flex-center {
     display: flex;
     flex-direction: column;

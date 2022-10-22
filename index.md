@@ -71,4 +71,14 @@ inconsistencies, is no longer needed.
 
 **Fix 1a is the best solution.**
 
+```scss
+.parallax-page {
+  perspective-origin: left;
+}
+
+%parallax-bg {
+  transform-origin: left;
+}
+```
+
 </div>
