@@ -6,11 +6,27 @@
     box-sizing: border-box;
 }
 
-body {
+body, h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, hr,
+dl, dd, ol, ul, figure {
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, hr,
+dl, dd, ol, ul, figure {
+  margin-bottom: 1rem;
+}
+
+html {
     font-family: 'Montserrat', sans-serif;
-    font-size: max(3vmin, 1.2rem);
-    font-weight: 400;
-    line-height: 1.2;
+    font-size: clamp(1.6rem, 3vmin, 2rem);
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+body {
     background-color: red;
 }
 
@@ -19,7 +35,7 @@ h1, h2 {
 }
 
 strong {
-    font-weight: 500;
+    font-weight: 600;
 }
 
 a {
@@ -50,6 +66,11 @@ a {
     p {
         max-width: 36em;
     }
+
+    @media (max-width: 600px) {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
 }
 
 .base-layer {
@@ -61,7 +82,7 @@ a {
 
 .parallax-group {
     color: $bg-color;
-    text-shadow: 1px 1px 4px $text-color;
+    text-shadow: 1px 2px 4px $text-color;
 }
 
 footer {
@@ -181,7 +202,7 @@ footer {
     top: 30px;
     left: 30px;
     font-family: sans-serif;
-    font-size: 1.2rem;
+    font-size: 20px;
     z-index: 100;
     text-align: left;
     line-height: 1.5;
