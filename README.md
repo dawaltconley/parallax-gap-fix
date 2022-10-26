@@ -57,6 +57,10 @@ inconsistencies, is no longer needed.
 You can safely use [**Fix 1a**](#fix-1a) and get proper alignment on all 
 browsers.
 
+Also consider using 
+[`sass-parallax`](https://www.npmjs.com/package/sass-parallax), a small 
+CSS/Sass library that handles this as well as several other edge cases.
+
 ### Fix 1a
 
 This fix takes the intuitive method of changing the 
